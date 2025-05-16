@@ -1,41 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="style.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explore Philippines</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Explore Horizons - Login</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: url('phil.jpg') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+      width: 100%;
+      max-width: 950px;
+    }
+
+    .left, .right {
+      flex: 1;
+      padding: 40px;
+    }
+
+    .left {
+      color: white;
+      background: rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .left h1 {
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+
+    .left p {
+      margin-top: 10px;
+      font-size: 16px;
+      line-height: 1.5;
+      max-width: 400px;
+    }
+
+    .right {
+      background-color: rgba(255, 255, 255, 0.95);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .right h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .right input {
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      width: 100%;
+    }
+
+    .right a {
+      text-decoration: none;
+      font-size: 14px;
+      color: #0066cc;
+      margin-bottom: 20px;
+      display: block;
+      text-align: right;
+    }
+
+    .right button {
+      background-color: #007bff;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-bottom: 15px;
+      width: 100%;
+    }
+
+    .divider {
+      text-align: center;
+      margin: 15px 0;
+      color: #666;
+      position: relative;
+    }
+
+    .divider::before, .divider::after {
+      content: "";
+      position: absolute;
+      height: 1px;
+      background: #ccc;
+      width: 40%;
+      top: 50%;
+    }
+
+    .divider::before {
+      left: 0;
+    }
+
+    .divider::after {
+      right: 0;
+    }
+
+    .google-btn {
+      background: white;
+      color: #333;
+      border: 1px solid #ccc;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .google-btn img {
+      height: 20px;
+      margin-right: 10px;
+    }
+
+    .create {
+      margin-top: 10px;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .create a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        margin: 0 auto;
+      }
+
+      .left, .right {
+        padding: 30px;
+      }
+
+      .left h1 {
+        font-size: 32px;
+      }
+
+      .right h2 {
+        font-size: 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .left h1 {
+        font-size: 26px;
+      }
+
+      .left p {
+        font-size: 14px;
+      }
+
+      .right h2 {
+        font-size: 20px;
+      }
+
+      .right input, .right button {
+        font-size: 14px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="slide home">
-    <div class="slide-content">
-      <h1>Explore Top Destinations of the <span class="highlight">Philippines</span>.</h1>
-      <div class="destination-preview" onclick="window.location.href='boracay.html'">
-        <img src="boracay-small.jpeg" alt="Boracay">
-        <div class="destination-info">
-          <h2>Boracay</h2>
-          <p>Boracay is a small island in the central Philippines known for its resorts and beaches.</p>
-          <a href="boracay.html" class="btn">Learn More</a>
-        </div>
+  <div class="container">
+    <div class="left">
+      <h1>Explore Philippines</h1>
+      <p>Where Your Dream Destinations Become Reality.<br>Embark on a journey where every corner of the world is within your reach.</p>
+    </div>
+    <div class="right">
+      <h2>Sign In</h2>
+      <input type="text" id="username" placeholder="Enter your email">
+      <input type="password" id="password" placeholder="Password">
+      <a href="#">Forgot password?</a>
+      <div class="error" id="error"></div>
+      <button onclick="login()">SIGN IN</button>
+      <div class="divider">or</div>
+      <div class="google-btn">
+        <img src="https://img.icons8.com/color/16/000000/google-logo.png" alt="Google Logo"> Sign in with Google
       </div>
-      <div class="destination-preview" onclick="window.location.href='coron.html'">
-        <img src="coron-small.jpeg" alt="Coron Palawan">
-        <div class="destination-info">
-          <h2>Coron Palawan</h2>
-          <p>Coron is a municipality in Palawan, famous for its stunning landscapes and diving spots.</p>
-          <a href="coron.html" class="btn">Learn More</a>
-        </div>
-      </div>
-      <div class="destination-preview" onclick="window.location.href='chocolate-hills.html'">
-        <img src="chocolate-hills-small.jpeg" alt="Chocolate Hills of Bohol">
-        <div class="destination-info">
-          <h2>Chocolate Hills of Bohol</h2>
-          <p>The Chocolate Hills are a geological formation in Bohol, Philippines.</p>
-          <a href="chocolate-hills.html" class="btn">Learn More</a>
-        </div>
-      </div>
+      <div class="create">Are you new? <a href="#">Create an Account</a></div>
     </div>
   </div>
+<script>
+  function login() {
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const error = document.getElementById("error");
+
+    // Check if email ends with '@gmail.com'
+    if (!username.endsWith("@gmail.com")) {
+      error.textContent = "Only Gmail addresses are allowed.";
+      return;
+    }
+
+    // You can optionally require a password or allow any
+    if (password.length === 0) {
+      error.textContent = "Please enter a password.";
+      return;
+    }
+
+    // Passed: login allowed
+    localStorage.setItem("isLoggedIn", "true");
+    window.location.href = "home.html";
+  }
+</script>
+
+    }
+  </script>
 </body>
 </html>

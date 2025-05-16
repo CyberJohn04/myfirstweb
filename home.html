@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore Philippines</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    if (localStorage.getItem("isLoggedIn") !== "true") {
+      window.location.href = "index.html";
+    }
+  </script>
+</head>
+<body>
+  <div class="slide home">
+    <div class="slide-content">
+      <h1>Explore Top Destinations of the <span class="highlight">Philippines</span>.</h1>
+
+      <div class="destination-preview" onclick="window.location.href='boracay.html'">
+        <img src="boracay-small.jpeg" alt="Boracay">
+        <div class="destination-info">
+          <h2>Boracay</h2>
+          <p>Boracay is a small island in the central Philippines known for its resorts and beaches.</p>
+          <a href="boracay.html" class="btn">Learn More</a>
+        </div>
+      </div>
+
+      <div class="destination-preview" onclick="window.location.href='coron.html'">
+        <img src="coron-small.jpeg" alt="Coron Palawan">
+        <div class="destination-info">
+          <h2>Coron Palawan</h2>
+          <p>Coron is a municipality in Palawan, famous for its stunning landscapes and diving spots.</p>
+          <a href="coron.html" class="btn">Learn More</a>
+        </div>
+      </div>
+
+      <div class="destination-preview" onclick="window.location.href='chocolate-hills.html'">
+        <img src="chocolate-hills-small.jpeg" alt="Chocolate Hills of Bohol">
+        <div class="destination-info">
+          <h2>Chocolate Hills of Bohol</h2>
+          <p>The Chocolate Hills are a geological formation in Bohol, Philippines.</p>
+          <a href="chocolate-hills.html" class="btn">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
