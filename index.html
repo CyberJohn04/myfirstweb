@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Explore Horizons - Login</title>
+  <title>Explore Philippines - Login</title>
   <style>
     * {
       box-sizing: border-box;
@@ -11,9 +11,8 @@
       padding: 0;
       font-family: 'Segoe UI', sans-serif;
     }
-
     body {
-      background: url('phil.jpg') no-repeat center center fixed;
+      background: url('gray.jpg') no-repeat center center fixed;
       background-size: cover;
       min-height: 100vh;
       display: flex;
@@ -21,7 +20,6 @@
       align-items: center;
       padding: 20px;
     }
-
     .container {
       display: flex;
       flex-direction: row;
@@ -33,44 +31,39 @@
       width: 100%;
       max-width: 950px;
     }
-
     .left, .right {
       flex: 1;
       padding: 40px;
     }
-
     .left {
       color: white;
-      background: rgba(0, 0, 0, 0.4);
+      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('phil.jpg') no-repeat center center;
+      background-size: cover;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      text-align: center; /* Center text */
     }
-
     .left h1 {
       font-size: 38px;
       margin-bottom: 10px;
     }
-
     .left p {
       margin-top: 10px;
       font-size: 16px;
       line-height: 1.5;
       max-width: 400px;
     }
-
     .right {
       background-color: rgba(255, 255, 255, 0.95);
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
-
     .right h2 {
       margin-bottom: 20px;
       color: #333;
     }
-
     .right input {
       padding: 12px;
       margin-bottom: 15px;
@@ -78,7 +71,6 @@
       border-radius: 6px;
       width: 100%;
     }
-
     .right a {
       text-decoration: none;
       font-size: 14px;
@@ -87,7 +79,6 @@
       display: block;
       text-align: right;
     }
-
     .right button {
       background-color: #007bff;
       color: white;
@@ -99,14 +90,12 @@
       margin-bottom: 15px;
       width: 100%;
     }
-
     .divider {
       text-align: center;
       margin: 15px 0;
       color: #666;
       position: relative;
     }
-
     .divider::before, .divider::after {
       content: "";
       position: absolute;
@@ -115,15 +104,12 @@
       width: 40%;
       top: 50%;
     }
-
     .divider::before {
       left: 0;
     }
-
     .divider::after {
       right: 0;
     }
-
     .google-btn {
       background: white;
       color: #333;
@@ -135,29 +121,44 @@
       border-radius: 6px;
       cursor: pointer;
       font-size: 14px;
+      transition: background 0.3s;
     }
-
+    .google-btn:hover {
+      background: #f1f1f1;
+    }
     .google-btn img {
       height: 20px;
       margin-right: 10px;
     }
-
     .create {
       margin-top: 10px;
       font-size: 14px;
       text-align: center;
     }
-
     .create a {
       color: #007bff;
       text-decoration: none;
     }
-
+    .create a:hover {
+      text-decoration: underline;
+    }
     .error {
       color: red;
       font-size: 14px;
       text-align: center;
       margin-bottom: 10px;
+    }
+    .company-info {
+      margin-top: 20px;
+      text-align: center;
+      color: white;
+    }
+    .company-info img {
+      max-width: 80px; /* Reduced max-width */
+      margin-bottom: 10px;
+      border: 2px solid white; /* Added border */
+      border-radius: 5px; /* Rounded corners */
+      padding: 5px; /* Added padding */
     }
 
     /* Responsive Design */
@@ -166,33 +167,26 @@
         flex-direction: column;
         margin: 0 auto;
       }
-
       .left, .right {
         padding: 30px;
       }
-
       .left h1 {
         font-size: 32px;
       }
-
       .right h2 {
         font-size: 24px;
       }
     }
-
     @media (max-width: 480px) {
       .left h1 {
         font-size: 26px;
       }
-
       .left p {
         font-size: 14px;
       }
-
       .right h2 {
         font-size: 20px;
       }
-
       .right input, .right button {
         font-size: 14px;
       }
@@ -204,45 +198,44 @@
     <div class="left">
       <h1>Explore Philippines</h1>
       <p>Where Your Dream Destinations Become Reality.<br>Embark on a journey where every corner of the world is within your reach.</p>
+      <div class="company-info">
+        <img src="logo.png" alt="Your Company Logo">
+        <p>Promoted by: JBCL Company</p>
+      </div>
     </div>
     <div class="right">
       <h2>Sign In</h2>
       <input type="text" id="username" placeholder="Enter your email">
       <input type="password" id="password" placeholder="Password">
-      <a href="#">Forgot password?</a>
+      <a href="forgot.html">Forgot password?</a>
       <div class="error" id="error"></div>
       <button onclick="login()">SIGN IN</button>
       <div class="divider">or</div>
-      <div class="google-btn">
-        <img src="https://img.icons8.com/color/16/000000/google-logo.png" alt="Google Logo"> Sign in with Google
+      <div class="google-btn" onclick="signInWithGoogle()">
+        <img src="gog.jpg" alt="Google Logo"> Sign in with Google
       </div>
-      <div class="create">Are you new? <a href="#">Create an Account</a></div>
+      <div class="create">Are you new? <a href="register.html">Create an Account</a></div>
     </div>
   </div>
-<script>
-  function login() {
-    const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value.trim();
-    const error = document.getElementById("error");
-
-    // Check if email ends with '@gmail.com'
-    if (!username.endsWith("@gmail.com")) {
-      error.textContent = "Only Gmail addresses are allowed.";
-      return;
+  <script>
+    function login() {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const error = document.getElementById("error");
+      if (!username.endsWith("@gmail.com")) {
+        error.textContent = "Only Gmail addresses are allowed.";
+        return;
+      }
+      if (password.length === 0) {
+        error.textContent = "Please enter a password.";
+        return;
+      }
+      localStorage.setItem("isLoggedIn", "true");
+      window.location.href = "home.html";
     }
-
-    // You can optionally require a password or allow any
-    if (password.length === 0) {
-      error.textContent = "Please enter a password.";
-      return;
-    }
-
-    // Passed: login allowed
-    localStorage.setItem("isLoggedIn", "true");
-    window.location.href = "home.html";
-  }
-</script>
-
+    function signInWithGoogle() {
+      alert("Redirecting to Google Sign-In...");
+      window.location.href = "home.html";
     }
   </script>
 </body>
